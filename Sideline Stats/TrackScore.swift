@@ -1,8 +1,8 @@
 //
-//  addJammers.swift
+//  TrackScore.swift
 //  Sideline Stats
 //
-//  Created by Caitlin on 6/3/15.
+//  Created by Caitlin on 6/5/15.
 //  Copyright (c) 2015 Caitlin. All rights reserved.
 //
 
