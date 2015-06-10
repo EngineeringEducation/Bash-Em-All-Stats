@@ -7,49 +7,80 @@
 //
 import UIKit
 
-class LeadJammer:SidelineStats {
+class LeadJammer:UIViewController {
     
     //TODO: Add field displaying current lead
     
-    var leadJammerTeam = "test"
     @IBOutlet var leadJammerMessage: UILabel!
+    var leadJammerTeam:String = ""
+    
+    var jammers:Jammers!
+    var dataClass:DataClass!
+    
+    override func viewWillAppear(animated: Bool) {
+    }
+    
     
     @IBAction func homeIsLead(sender: AnyObject) {
         
-        if leadJammerTeam.isEmpty {
-            
+        if leadJammerTeam == "" || leadJammerTeam == "away" {
             leadJammerTeam = "home"
             
         } else if leadJammerTeam == "home" {
-            
             leadJammerTeam = ""
             
         }
         
         displayLeadJammerMessage(leadJammerTeam)
-    
     }
    
     
     @IBAction func awayIsLead(sender: AnyObject) {
     
-        if leadJammerTeam.isEmpty {
-            
+        if leadJammerTeam == "" || leadJammerTeam == "home" {
             leadJammerTeam = "away"
             
         } else if leadJammerTeam == "away" {
-            
             leadJammerTeam = ""
             
         }
         
         displayLeadJammerMessage(leadJammerTeam)
-    
     }
     
     func displayLeadJammerMessage(var lead:String) {
         
-        leadJammerMessage.text = ("Lead Jammer: \(lead)")
+        if leadJammerTeam != "" {
+
+            leadJammerMessage.text = "Lead Jammer: " + lead
+            
+        } else {
+            
+            leadJammerMessage.text = "No Lead"
+            
+        }
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        dataClass.addWhoWasLeadToArray(leadJammerTeam)
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "ShowScorePageSegue" {
+            
+            if let destinationVC = segue.destinationViewController as? TrackScore {
+                
+                destinationVC.jammers = jammers
+                destinationVC.dataClass = dataClass
+                
+            }
+            
+        }
         
     }
     

@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		48183FDF1B21131A00697A25 /* LeadJammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48183FDE1B21131A00697A25 /* LeadJammer.swift */; };
+		481840111B2220E900697A25 /* TrackScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481840101B2220E900697A25 /* TrackScore.swift */; };
+		48356CD11B2655D4000F36CA /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48356CD01B2655D4000F36CA /* DataClass.swift */; };
 		489875B41B17DB4300594D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489875B31B17DB4300594D67 /* AppDelegate.swift */; };
-		489875B61B17DB4300594D67 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489875B51B17DB4300594D67 /* ViewController.swift */; };
+		489875B61B17DB4300594D67 /* SidelineStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489875B51B17DB4300594D67 /* SidelineStats.swift */; };
 		489875B91B17DB4300594D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 489875B71B17DB4300594D67 /* Main.storyboard */; };
 		489875BB1B17DB4300594D67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489875BA1B17DB4300594D67 /* Images.xcassets */; };
 		489875BE1B17DB4300594D67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 489875BC1B17DB4300594D67 /* LaunchScreen.xib */; };
 		489875CA1B17DB4300594D67 /* Sideline_StatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489875C91B17DB4300594D67 /* Sideline_StatsTests.swift */; };
+		48DC52DA1B1FC49300BBC2D2 /* Jammers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC52D91B1FC49300BBC2D2 /* Jammers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +30,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		48183FDE1B21131A00697A25 /* LeadJammer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeadJammer.swift; path = ../LeadJammer.swift; sourceTree = "<group>"; };
+		481840101B2220E900697A25 /* TrackScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackScore.swift; sourceTree = "<group>"; };
+		48356CD01B2655D4000F36CA /* DataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
 		489875AE1B17DB4300594D67 /* Sideline Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sideline Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		489875B21B17DB4300594D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		489875B31B17DB4300594D67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		489875B51B17DB4300594D67 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		489875B51B17DB4300594D67 /* SidelineStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidelineStats.swift; sourceTree = "<group>"; };
 		489875B81B17DB4300594D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		489875BA1B17DB4300594D67 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		489875BD1B17DB4300594D67 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		489875C31B17DB4300594D67 /* Sideline StatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sideline StatsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		489875C81B17DB4300594D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		489875C91B17DB4300594D67 /* Sideline_StatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sideline_StatsTests.swift; sourceTree = "<group>"; };
+		48DC52D91B1FC49300BBC2D2 /* Jammers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jammers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +86,12 @@
 			isa = PBXGroup;
 			children = (
 				489875B31B17DB4300594D67 /* AppDelegate.swift */,
-				489875B51B17DB4300594D67 /* ViewController.swift */,
+				48183FDE1B21131A00697A25 /* LeadJammer.swift */,
+				481840101B2220E900697A25 /* TrackScore.swift */,
+				489875B51B17DB4300594D67 /* SidelineStats.swift */,
+				48356CD01B2655D4000F36CA /* DataClass.swift */,
 				489875B71B17DB4300594D67 /* Main.storyboard */,
+				48DC52D91B1FC49300BBC2D2 /* Jammers.swift */,
 				489875BA1B17DB4300594D67 /* Images.xcassets */,
 				489875BC1B17DB4300594D67 /* LaunchScreen.xib */,
 				489875B11B17DB4300594D67 /* Supporting Files */,
@@ -212,7 +224,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				489875B61B17DB4300594D67 /* ViewController.swift in Sources */,
+				48356CD11B2655D4000F36CA /* DataClass.swift in Sources */,
+				489875B61B17DB4300594D67 /* SidelineStats.swift in Sources */,
+				48183FDF1B21131A00697A25 /* LeadJammer.swift in Sources */,
+				48DC52DA1B1FC49300BBC2D2 /* Jammers.swift in Sources */,
+				481840111B2220E900697A25 /* TrackScore.swift in Sources */,
 				489875B41B17DB4300594D67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +425,7 @@
 				489875CF1B17DB4300594D67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		489875D01B17DB4300594D67 /* Build configuration list for PBXNativeTarget "Sideline StatsTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +434,7 @@
 				489875D21B17DB4300594D67 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
