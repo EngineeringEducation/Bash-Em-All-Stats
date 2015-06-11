@@ -116,7 +116,6 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
 
             cell.textLabel?.text = dataClass.homeJammers[indexPath.row].number
             
-            println("table cell home")
             return cell
         
         } else if tableView == awayJammerTable {
@@ -125,7 +124,6 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
             
             cell2.textLabel?.text = dataClass.awayJammers[indexPath.row].number
             
-            println("table cell away")
             return cell2
             
         }

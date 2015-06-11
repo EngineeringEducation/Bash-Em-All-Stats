@@ -113,7 +113,7 @@ class DataClass: NSObject {
         }
     }
     
-    func populateDataArray() {
+    func populateHomeDataArray() {
                 
         for var i = 0; i < homeJammers.count; ++i {
             
@@ -130,7 +130,29 @@ class DataClass: NSObject {
                 homeJammers[i].percentWasLead = homeJammers[i].lead! / (homeJammers[i].lead! + homeJammers[i].notLead!)
                 homeJammers[i].pointDifferential = homeJammers[i].pointsFor - homeJammers[i].pointsAgainst
                 
-                println("test \(homeJammers[i].percentWasLead) and test \(homeJammers[i].pointDifferential)")
+                println("home - %lead \(homeJammers[i].percentWasLead) and ptdiff \(homeJammers[i].pointDifferential)")
+            }
+        }
+    }
+    
+    func populateAwayDataArray() {
+        
+        for var i = 0; i < awayJammers.count; ++i {
+            
+            if awayJammers[i].number == currentJammerAway {
+                
+                if currentLead == "away" {
+                    awayJammers[i].lead = awayJammers[i].lead! + 1
+                } else {
+                    awayJammers[i].notLead = awayJammers[i].notLead! + 1
+                }
+                
+                awayJammers[i].pointsFor = awayJammers[i].pointsFor + awayScoreForJam
+                awayJammers[i].pointsAgainst = awayJammers[i].pointsAgainst + homeScoreForJam
+                awayJammers[i].percentWasLead = awayJammers[i].lead! / (awayJammers[i].lead! + awayJammers[i].notLead!)
+                awayJammers[i].pointDifferential = awayJammers[i].pointsFor - awayJammers[i].pointsAgainst
+                
+                println("away - % lead \(awayJammers[i].percentWasLead) and diff \(awayJammers[i].pointDifferential)")
             }
         }
     }
