@@ -75,7 +75,7 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBAction func saveHomeJammer(sender: AnyObject) {
         
         let newJammer = String(newHomeJammerField.text)
-        dataClass.addJammerToJammerArray("home", newJammer: newJammer)
+        dataClass.addJammerToJammerArray("home", jammer: newJammer)
         homeJammerTable.reloadData()
     
     }
@@ -84,7 +84,7 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBAction func saveAwayJammer(sender: AnyObject) {
         
         let newJammer = String(newAwayJammerField.text)
-        dataClass.addJammerToJammerArray("away", newJammer: newJammer)
+        dataClass.addJammerToJammerArray("away", jammer: newJammer)
         awayJammerTable.reloadData()
     }
     
@@ -151,6 +151,7 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
             if currentCell.textLabel?.text != nil {
                 selectedJammerHome = currentCell.textLabel!.text!
+                dataClass.currentJammerHome = currentCell.textLabel!.text!
             } else {
                 println("nothing here home")
             }
@@ -161,6 +162,7 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
             let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
             if currentCell.textLabel?.text != nil {
                 selectedJammerAway = currentCell.textLabel!.text!
+                dataClass.currentJammerAway = currentCell.textLabel!.text!
             } else {
                 println("nothing here away")
             }

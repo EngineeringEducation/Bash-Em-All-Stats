@@ -74,38 +74,40 @@ class DataClass: NSObject {
         
     }
     
-    func addJammerToJammerArray(team: String, newJammer: String) {
+    func addJammerToJammerArray(team: String, jammer: String) {
         
         //FIX: Right now you can't have the same number on both teams. 
         
+        var newJammer = Jammers()
+        
         if team == "home" {
             
-            if jammers.number != newJammer  {
+            if newJammer.number != newJammer  {
             
-                jammers.number = newJammer
-                jammers.lead = 0
-                jammers.notLead = 0
-                jammers.pointsFor = 0
-                jammers.pointsAgainst = 0
-                jammers.percentWasLead = 0
-                jammers.pointDifferential = 0
-                homeJammers.append(jammers)
-                println("I added a home jammer to the array")
+                newJammer.number = jammer
+                newJammer.lead = 0
+                newJammer.notLead = 0
+                newJammer.pointsFor = 0
+                newJammer.pointsAgainst = 0
+                newJammer.percentWasLead = 0
+                newJammer.pointDifferential = 0
+                homeJammers.append(newJammer)
+                println("I added an home jammer to the array")
                 
             }
             
         } else if team == "away" {
         
-            if jammers.number != newJammer {
+            if newJammer.number != newJammer {
                     
-                jammers.number = newJammer
-                jammers.lead = 0
-                jammers.notLead = 0
-                jammers.pointsFor = 0
-                jammers.pointsAgainst = 0
-                jammers.percentWasLead = 0
-                jammers.pointDifferential = 0
-                awayJammers.append(jammers)
+                newJammer.number = jammer
+                newJammer.lead = 0
+                newJammer.notLead = 0
+                newJammer.pointsFor = 0
+                newJammer.pointsAgainst = 0
+                newJammer.percentWasLead = 0
+                newJammer.pointDifferential = 0
+                awayJammers.append(newJammer)
                 println("I added an away jammer to the array")
             }
         }
@@ -113,19 +115,24 @@ class DataClass: NSObject {
     
     func populateDataArray() {
                 
-        if jammers.number == currentJammerHome {
-            if currentLead == "home" {
-                jammers.lead++
-            } else {
-                jammers.notLead++
-            }
-        jammers.pointsFor = jammers.pointsFor + homeScoreForJam
-        jammers.pointsAgainst = jammers.pointsAgainst + awayScoreForJam
-        jammers.percentWasLead = Float(jammers.lead / (jammers.lead + jammers.notLead))
-        jammers.pointDifferential = jammers.pointsFor - jammers.pointsAgainst
+        for var i = 0; i < homeJammers.count; ++i {
+            
+            if homeJammers[i].number == currentJammerHome {
         
-        println("test \(jammers.percentWasLead) and test \(jammers.pointDifferential)")
-    }
+                if currentLead == "home" {
+                        homeJammers[i].lead = homeJammers[i].lead! + 1
+                    } else {
+                        homeJammers[i].notLead = homeJammers[i].notLead! + 1
+                }
+                
+                homeJammers[i].pointsFor = homeJammers[i].pointsFor + homeScoreForJam
+                homeJammers[i].pointsAgainst = homeJammers[i].pointsAgainst + awayScoreForJam
+                homeJammers[i].percentWasLead = homeJammers[i].lead! / (homeJammers[i].lead! + homeJammers[i].notLead!)
+                homeJammers[i].pointDifferential = homeJammers[i].pointsFor - homeJammers[i].pointsAgainst
+                
+                println("test \(homeJammers[i].percentWasLead) and test \(homeJammers[i].pointDifferential)")
+            }
+        }
     }
     
 }

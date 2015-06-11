@@ -18,13 +18,13 @@ class Jammers: NSObject {
     
     
     var number:String = String()
-    var lead:Int = Int()
-    var notLead:Int = Int()
+    var lead : Float?
+    var notLead : Float?
     var pointsFor:Int = Int()
     var pointsAgainst:Int = Int()
     var percentWasLead:Float = Float()
     var pointDifferential:Int = Int()
-
+    
     
 }
 

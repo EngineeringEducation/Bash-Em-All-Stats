@@ -66,6 +66,7 @@ class LeadJammer:UIViewController {
         
         super.viewWillAppear(animated)
         dataClass.addWhoWasLeadToArray(leadJammerTeam)
+        dataClass.currentLead = leadJammerTeam
         
     }
     
