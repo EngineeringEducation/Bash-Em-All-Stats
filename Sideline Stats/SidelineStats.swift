@@ -21,6 +21,7 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
     @IBOutlet weak var saveHomeJammerOutlet: UIButton!
     @IBOutlet weak var saveAwayJammerOutlet: UIButton!
     @IBOutlet weak var chooseJammerLabel: UILabel!
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     // MARK: - Models
     var selectedJammerHome:String = String()
@@ -171,23 +172,24 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         
-        if selectedJammerHome.isEmpty == true || selectedJammerAway.isEmpty == true {
+        if identifier  == "ShowLeadPageSegue" {
             
-            chooseJammerLabel.text = "Please choose a jammer for each team"
-            println("nope, won't happen")
-            return false
+            if selectedJammerHome.isEmpty == true || selectedJammerAway.isEmpty == true {
             
-            
+                chooseJammerLabel.text = "Please choose a jammer for each team"
+                println("nope, won't happen")
+                return false
+            }
         }
         
         return true
-        
+
     }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     
-        if segue.identifier == "ShowLeadPageSegue" {
+        if segue.identifier == "ShowLeadPageSegue" || segue.identifier == "ShowStatsPageSegue" {
             
             if let destinationVC = segue.destinationViewController as? LeadJammer {
                 

@@ -45,6 +45,11 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YqW-rm-bSc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <items>
+                                    <barButtonItem title="Stats" id="XvE-f7-UiW">
+                                        <connections>
+                                            <segue destination="8Tc-eT-ehv" kind="show" identifier="ShowStatsPageSegue" id="0CS-cC-JEA"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="8CW-yo-gWE"/>
                                     <barButtonItem systemItem="done" id="oug-ys-l8J">
                                         <connections>
@@ -342,6 +347,7 @@
                     <connections>
                         <outlet property="awayJammerTable" destination="0ct-EZ-sme" id="n7c-ON-dO5"/>
                         <outlet property="chooseJammerLabel" destination="ZEj-FA-Oke" id="WDu-nw-QIF"/>
+                        <outlet property="doneButton" destination="oug-ys-l8J" id="SwO-ZB-5E2"/>
                         <outlet property="homeJammerTable" destination="TLp-ce-nlW" id="41C-Dy-Kat"/>
                         <outlet property="newAwayJammerField" destination="5xc-7H-txM" id="mNi-wj-1iZ"/>
                         <outlet property="newHomeJammerField" destination="Mrr-5Y-W2L" id="ISW-wQ-1bF"/>
@@ -352,6 +358,138 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m3A-o8-ZDx" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="376.5" y="-322"/>
+        </scene>
+        <!--Item 2-->
+        <scene sceneID="dyR-v4-H2v">
+            <objects>
+                <viewController id="ohd-Qx-U8E" customClass="AwayTableStats" customModule="Sideline_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="826-JO-lUd"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fl7-Is-JO6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2ng-dg-8SZ">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="73q-No-vgo">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="ohd-Qx-U8E" id="B8J-TM-e8R"/>
+                                    <outlet property="delegate" destination="ohd-Qx-U8E" id="YNK-Bs-aiM"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="73q-No-vgo" firstAttribute="leading" secondItem="2ng-dg-8SZ" secondAttribute="leadingMargin" constant="-16" id="Ygs-jG-6yV"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="73q-No-vgo" secondAttribute="bottom" constant="27" id="Zue-CO-8TM"/>
+                            <constraint firstItem="73q-No-vgo" firstAttribute="top" secondItem="2ng-dg-8SZ" secondAttribute="topMargin" constant="-27" id="d1W-sX-Cpa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="73q-No-vgo" secondAttribute="trailing" constant="-16" id="r74-gg-sUr"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="73q-No-vgo"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="Ygs-jG-6yV"/>
+                                <exclude reference="Zue-CO-8TM"/>
+                                <exclude reference="d1W-sX-Cpa"/>
+                                <exclude reference="r74-gg-sUr"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="73q-No-vgo"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="Ygs-jG-6yV"/>
+                                <include reference="Zue-CO-8TM"/>
+                                <include reference="d1W-sX-Cpa"/>
+                                <include reference="r74-gg-sUr"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="j8w-uN-jNt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7t-uK-QrV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="574.5" y="1054"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="25C-uR-Oqr">
+            <objects>
+                <viewController id="U2V-Du-7WG" customClass="HomeTableStats" customModule="Sideline_Stats" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cKm-eP-Kzr"/>
+                        <viewControllerLayoutGuide type="bottom" id="t9y-tw-vf9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="v5e-ue-YwD">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="rJ3-xe-pZu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="U2V-Du-7WG" id="6BC-IV-JfI"/>
+                                    <outlet property="delegate" destination="U2V-Du-7WG" id="zYH-Bb-vXp"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rJ3-xe-pZu" firstAttribute="leading" secondItem="v5e-ue-YwD" secondAttribute="leadingMargin" constant="-16" id="MtD-P6-gcA"/>
+                            <constraint firstItem="rJ3-xe-pZu" firstAttribute="top" secondItem="v5e-ue-YwD" secondAttribute="topMargin" constant="-29" id="bqe-T8-YMN"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="rJ3-xe-pZu" secondAttribute="bottom" constant="29" id="ctN-yU-Hub"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rJ3-xe-pZu" secondAttribute="trailing" constant="-16" id="ibA-Ua-pVJ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="rJ3-xe-pZu"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="MtD-P6-gcA"/>
+                                <exclude reference="bqe-T8-YMN"/>
+                                <exclude reference="ctN-yU-Hub"/>
+                                <exclude reference="ibA-Ua-pVJ"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="rJ3-xe-pZu"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="MtD-P6-gcA"/>
+                                <include reference="bqe-T8-YMN"/>
+                                <include reference="ctN-yU-Hub"/>
+                                <include reference="ibA-Ua-pVJ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="l5R-g9-nkM"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FvR-el-ZaK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="82.5" y="1054"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="OhO-7z-CqM">
+            <objects>
+                <tabBarController id="8Tc-eT-ehv" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="fDS-sX-MNf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="U2V-Du-7WG" kind="relationship" relationship="viewControllers" id="yvD-i2-6sn"/>
+                        <segue destination="ohd-Qx-U8E" kind="relationship" relationship="viewControllers" id="abG-Uf-BJX"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AW1-8G-jp0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="331.5" y="357"/>
         </scene>
         <!--Lead Jammer-->
         <scene sceneID="gfr-Lx-vT9">
