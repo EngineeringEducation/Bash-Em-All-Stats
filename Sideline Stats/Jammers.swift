@@ -17,14 +17,21 @@ class Jammers: NSObject {
 //TODO: Add some functionality to let them have different sessions. 
     
     
-    var number:String = String()
-    var lead : Float?
-    var notLead : Float?
-    var pointsFor:Int = Int()
-    var pointsAgainst:Int = Int()
-    var percentWasLead:Float = Float()
-    var pointDifferential:Int = Int()
-    
+    var number : String?
+    var lead:Float = 0
+    var notLead:Float = 0
+    var pointsFor = 0
+    var pointsAgainst = 0
+    var percentWasLead : Float {
+        if (self.lead + self.notLead) != 0 {
+            return (self.lead / (self.lead + self.notLead))
+        } else {
+        return 0
+        }
+    }
+    var pointDifferential:Int {
+        return (self.pointsFor - self.pointsAgainst)
+    }
     
 }
 

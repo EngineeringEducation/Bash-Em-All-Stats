@@ -136,9 +136,10 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     override func viewWillDisappear(animated: Bool) {
     
-        dataClass.addJammersToArray(selectedJammerHome,away: selectedJammerAway)
         dataClass.addJamNumberToArray()
-        println(dataClass.dataArray)
+        dataClass.addJammersToDataArray(selectedJammerHome,away: selectedJammerAway)
+
+        println(dataClass.jamData)
     
     }
     

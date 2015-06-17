@@ -12,6 +12,7 @@
 		48356CD11B2655D4000F36CA /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48356CD01B2655D4000F36CA /* DataClass.swift */; };
 		48356CD51B2A97F8000F36CA /* HomeTableStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48356CD41B2A97F8000F36CA /* HomeTableStats.swift */; };
 		48356CD71B2A9802000F36CA /* AwayTableStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48356CD61B2A9802000F36CA /* AwayTableStats.swift */; };
+		4878539C1B30F14F0008C173 /* Jam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4878539B1B30F14F0008C173 /* Jam.swift */; };
 		489875B41B17DB4300594D67 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489875B31B17DB4300594D67 /* AppDelegate.swift */; };
 		489875B61B17DB4300594D67 /* SidelineStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489875B51B17DB4300594D67 /* SidelineStats.swift */; };
 		489875B91B17DB4300594D67 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 489875B71B17DB4300594D67 /* Main.storyboard */; };
@@ -37,6 +38,7 @@
 		48356CD01B2655D4000F36CA /* DataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
 		48356CD41B2A97F8000F36CA /* HomeTableStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableStats.swift; sourceTree = "<group>"; };
 		48356CD61B2A9802000F36CA /* AwayTableStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwayTableStats.swift; sourceTree = "<group>"; };
+		4878539B1B30F14F0008C173 /* Jam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jam.swift; sourceTree = "<group>"; };
 		489875AE1B17DB4300594D67 /* Sideline Stats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sideline Stats.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		489875B21B17DB4300594D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		489875B31B17DB4300594D67 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				481840101B2220E900697A25 /* TrackScore.swift */,
 				489875B51B17DB4300594D67 /* SidelineStats.swift */,
 				48356CD01B2655D4000F36CA /* DataClass.swift */,
+				4878539B1B30F14F0008C173 /* Jam.swift */,
 				489875B71B17DB4300594D67 /* Main.storyboard */,
 				48356CD41B2A97F8000F36CA /* HomeTableStats.swift */,
 				48356CD61B2A9802000F36CA /* AwayTableStats.swift */,
@@ -234,6 +237,7 @@
 				48356CD51B2A97F8000F36CA /* HomeTableStats.swift in Sources */,
 				48356CD11B2655D4000F36CA /* DataClass.swift in Sources */,
 				489875B61B17DB4300594D67 /* SidelineStats.swift in Sources */,
+				4878539C1B30F14F0008C173 /* Jam.swift in Sources */,
 				48183FDF1B21131A00697A25 /* LeadJammer.swift in Sources */,
 				48DC52DA1B1FC49300BBC2D2 /* Jammers.swift in Sources */,
 				481840111B2220E900697A25 /* TrackScore.swift in Sources */,

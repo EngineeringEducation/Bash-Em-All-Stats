@@ -7,58 +7,65 @@
 //
 import UIKit
 
-class LeadJammer:UIViewController {
+enum teamThatIsLead : String {
     
-    //TODO: Add field displaying current lead
+    case Home = "Home"
+    case Away = "Away"
+    case None = "No Lead"
+    
+    init() {
+        
+        self = .None
+    }
+    
+}
+
+class LeadJammer:UIViewController {
     
     @IBOutlet var leadJammerMessage: UILabel!
     var leadJammerTeam:String = ""
+    var leadTeam = teamThatIsLead()
+    
     
     var jammers:Jammers!
     var dataClass:DataClass!
     
-    override func viewWillAppear(animated: Bool) {
+    func assignLeadTeam(var team: String) {
+        
+        if team == "home" {
+            switch (leadTeam) {
+            case .Home:
+                leadTeam = .None
+            default:
+                leadTeam = .Home
+            }
+        } else {
+            switch (leadTeam) {
+            case .Away:
+                leadTeam = .None
+            default:
+                leadTeam = .Away
+            }
+        }
+        team = leadTeam.rawValue
+        displayLeadJammerMessage(team)
     }
-    
     
     @IBAction func homeIsLead(sender: AnyObject) {
         
-        if leadJammerTeam == "" || leadJammerTeam == "away" {
-            leadJammerTeam = "home"
-            
-        } else if leadJammerTeam == "home" {
-            leadJammerTeam = ""
-            
-        }
-        
-        displayLeadJammerMessage(leadJammerTeam)
+        assignLeadTeam("home")
     }
    
     
     @IBAction func awayIsLead(sender: AnyObject) {
     
-        if leadJammerTeam == "" || leadJammerTeam == "home" {
-            leadJammerTeam = "away"
-            
-        } else if leadJammerTeam == "away" {
-            leadJammerTeam = ""
-            
-        }
+        assignLeadTeam("away")
         
-        displayLeadJammerMessage(leadJammerTeam)
     }
     
     func displayLeadJammerMessage(var lead:String) {
         
-        if leadJammerTeam != "" {
-
-            leadJammerMessage.text = "Lead Jammer: " + lead
-            
-        } else {
-            
-            leadJammerMessage.text = "No Lead"
-            
-        }
+        leadJammerMessage.text = (leadTeam == teamThatIsLead.None) ? "None" : "Lead Jammer: " + lead
         
     }
     
