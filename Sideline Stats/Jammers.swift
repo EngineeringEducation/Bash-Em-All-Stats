@@ -17,7 +17,7 @@ class Jammers: NSObject {
 //TODO: Add some functionality to let them have different sessions. 
     
     
-    var number : String?
+    var number : String = ""
     var lead:Float = 0
     var notLead:Float = 0
     var pointsFor = 0
@@ -31,6 +31,12 @@ class Jammers: NSObject {
     }
     var pointDifferential:Int {
         return (self.pointsFor - self.pointsAgainst)
+    }
+    
+    override init(){
+        
+        
+        
     }
     
 }

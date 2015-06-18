@@ -16,5 +16,9 @@ class Jam: NSObject {
     var jamHomePoints = 0
     var jamAwayPoints = 0
     
+    override init(){
+        
+        
+    }
     
 }
