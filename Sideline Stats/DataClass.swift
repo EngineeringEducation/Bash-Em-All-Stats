@@ -35,6 +35,8 @@ class DataClass: NSObject {
         
     }
     
+    
+    // This function creates the current jam object so that in the next screens, the data can be added to it.
     func addJamNumberToArray() {
         
         var newJam = Jam()
@@ -77,18 +79,69 @@ class DataClass: NSObject {
     
     func addJammerToJammerArray(team: String, jammer: String) {
         
-        //FIX: Right now can have duplicate jammers
-        
-        //TODO: Need to 1) search for existing jammer in current array. If not in array, need to 2) create new object with jammer number and then 3) append it to the home (or away) jammer array
-        
         var newJammer = Jammers()
+        var duplicate : Bool = false
         
-        for var i = 0; i < homeJammers.count; ++i {
+        if team == "home" {
             
+            if homeJammers.count == 0 {
+                
+                duplicate = false
+                
+            } else {
+            
+                for var i = 0; i < homeJammers.count; ++i {
+                
+                    if homeJammers[i].number == jammer {
+                        
+                        println("this is a duplicate jammer")
+                        duplicate = true
+                        break
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            if duplicate == false {
+                newJammer.number = jammer
+                homeJammers.append(newJammer)
+        }
+        
+        
+        }
+        
+        if team == "away" {
+            
+            if awayJammers.count == 0 {
+                
+                duplicate = false
+                
+            } else {
+                
+                for var i = 0; i < awayJammers.count; ++i {
+                    
+                    if awayJammers[i].number == jammer {
+                        
+                        println("this is a duplicate jammer")
+                        duplicate = true
+                        break
+                        
+                    }
+                    
+                }
+                
+            }
+            
+            if duplicate == false {
+                newJammer.number = jammer
+                awayJammers.append(newJammer)
+            }
             
             
         }
-        
+      
     }
     
     func populateHomeDataArray() {

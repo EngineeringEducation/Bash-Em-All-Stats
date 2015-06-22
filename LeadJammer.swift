@@ -20,12 +20,17 @@ enum teamThatIsLead : String {
     
 }
 
-class LeadJammer:UIViewController {
+class LeadJammer:UIViewController, UITextFieldDelegate{
     
-    @IBOutlet var leadJammerMessage: UILabel!
+//    @IBOutlet var leadJammerMessage: UILabel!
     var leadJammerTeam:String = ""
     var leadTeam = teamThatIsLead()
+    var awayCurrentScore:Int?
+    var homeCurrentScore:Int?
     
+    @IBOutlet weak var homeScoreUITextField: UITextField!
+    
+    @IBOutlet weak var awayScoreUITextField: UITextField!
     
     var jammers:Jammers!
     var dataClass:DataClass!
@@ -48,7 +53,7 @@ class LeadJammer:UIViewController {
             }
         }
         team = leadTeam.rawValue
-        displayLeadJammerMessage(team)
+//        displayLeadJammerMessage(team)
     }
     
     @IBAction func homeIsLead(sender: AnyObject) {
@@ -63,25 +68,78 @@ class LeadJammer:UIViewController {
         
     }
     
-    func displayLeadJammerMessage(var lead:String) {
+    override func viewWillAppear(animated: Bool) {
+    
+        println(dataClass.currentScoreHome)
+        homeScoreUITextField.delegate = self
+        awayScoreUITextField.delegate = self
+//        awayScoreUITextField.text = dataClass.currentScoreAway.description
+        homeCurrentScore = dataClass.currentScoreHome
+        awayCurrentScore = dataClass.currentScoreAway
+        println("home \(homeCurrentScore)")
         
-        leadJammerMessage.text = (leadTeam == teamThatIsLead.None) ? "None" : "Lead Jammer: " + lead
+    
+    }
+    
+    override func viewDidLoad() {
+        
+        homeScoreUITextField.text = dataClass.currentScoreHome.description
+        awayScoreUITextField.text = dataClass.currentScoreAway.description
+    }
+    
+    
+    @IBAction func editHomeScore(sender: UITextField) {
         
     }
+    
+    @IBAction func editAwayScore(sender: UITextField) {
+        
+            println(awayScoreUITextField.text)
+    }
+    
+    //TODO: Need to make sure they only put in Ints into the score textfields. Right now not protecting from that at all.
+    //TODO: Right now you HAVE to push enter. Need to detect that or protect against it?
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        if textField == homeScoreUITextField {
+            
+            homeCurrentScore = textField.text.toInt()
+            
+        } else if textField == awayScoreUITextField {
+            
+            awayCurrentScore = textField.text.toInt()
+            
+        }
+        return true
+        
+    }
+    
+    
+//    func displayLeadJammerMessage(var lead:String) {
+//        
+//        leadJammerMessage.text = (leadTeam == teamThatIsLead.None) ? "None" : "Lead Jammer: " + lead
+//        
+//    }
     
     override func viewWillDisappear(animated: Bool) {
         
         super.viewWillAppear(animated)
         dataClass.addWhoWasLeadToArray(leadJammerTeam)
         dataClass.currentLead = leadJammerTeam
+        dataClass.calculateScores(homeCurrentScore!, away: awayCurrentScore!)
+        dataClass.currentJamInt++
+        dataClass.populateHomeDataArray()
+        dataClass.populateAwayDataArray()
+        println(dataClass.jamData)
+
         
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if segue.identifier == "ShowScorePageSegue" {
+        if segue.identifier == "ChooseJammersSegue" {
             
-            if let destinationVC = segue.destinationViewController as? TrackScore {
+            if let destinationVC = segue.destinationViewController as? ChooseJammersViewController {
                 
                 destinationVC.jammers = jammers
                 destinationVC.dataClass = dataClass

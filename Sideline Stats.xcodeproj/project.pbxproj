@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		4806CAD91B321FF90031505E /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4806CAD81B321FF90031505E /* TableViewCell.swift */; };
 		48183FDF1B21131A00697A25 /* LeadJammer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48183FDE1B21131A00697A25 /* LeadJammer.swift */; };
-		481840111B2220E900697A25 /* TrackScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481840101B2220E900697A25 /* TrackScore.swift */; };
+		481840111B2220E900697A25 /* TrackScoreUnused.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481840101B2220E900697A25 /* TrackScoreUnused.swift */; };
 		48356CD11B2655D4000F36CA /* DataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48356CD01B2655D4000F36CA /* DataClass.swift */; };
 		48356CD51B2A97F8000F36CA /* HomeTableStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48356CD41B2A97F8000F36CA /* HomeTableStats.swift */; };
 		48356CD71B2A9802000F36CA /* AwayTableStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48356CD61B2A9802000F36CA /* AwayTableStats.swift */; };
@@ -20,6 +20,7 @@
 		489875BB1B17DB4300594D67 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 489875BA1B17DB4300594D67 /* Images.xcassets */; };
 		489875BE1B17DB4300594D67 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 489875BC1B17DB4300594D67 /* LaunchScreen.xib */; };
 		489875CA1B17DB4300594D67 /* Sideline_StatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489875C91B17DB4300594D67 /* Sideline_StatsTests.swift */; };
+		48A811231B35F93B00891B6F /* ChooseJammersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48A811221B35F93B00891B6F /* ChooseJammersViewController.swift */; };
 		48DC52DA1B1FC49300BBC2D2 /* Jammers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48DC52D91B1FC49300BBC2D2 /* Jammers.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		4806CAD81B321FF90031505E /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewCell.swift; path = ../TableViewCell.swift; sourceTree = "<group>"; };
 		48183FDE1B21131A00697A25 /* LeadJammer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LeadJammer.swift; path = ../LeadJammer.swift; sourceTree = "<group>"; };
-		481840101B2220E900697A25 /* TrackScore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackScore.swift; sourceTree = "<group>"; };
+		481840101B2220E900697A25 /* TrackScoreUnused.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrackScoreUnused.swift; sourceTree = "<group>"; };
 		48356CD01B2655D4000F36CA /* DataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataClass.swift; sourceTree = "<group>"; };
 		48356CD41B2A97F8000F36CA /* HomeTableStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableStats.swift; sourceTree = "<group>"; };
 		48356CD61B2A9802000F36CA /* AwayTableStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AwayTableStats.swift; sourceTree = "<group>"; };
@@ -51,6 +52,7 @@
 		489875C31B17DB4300594D67 /* Sideline StatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Sideline StatsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		489875C81B17DB4300594D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		489875C91B17DB4300594D67 /* Sideline_StatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sideline_StatsTests.swift; sourceTree = "<group>"; };
+		48A811221B35F93B00891B6F /* ChooseJammersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseJammersViewController.swift; sourceTree = "<group>"; };
 		48DC52D91B1FC49300BBC2D2 /* Jammers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Jammers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,15 +96,16 @@
 			isa = PBXGroup;
 			children = (
 				489875B71B17DB4300594D67 /* Main.storyboard */,
-				489875B31B17DB4300594D67 /* AppDelegate.swift */,
-				48183FDE1B21131A00697A25 /* LeadJammer.swift */,
-				481840101B2220E900697A25 /* TrackScore.swift */,
 				489875B51B17DB4300594D67 /* SidelineStats.swift */,
+				48A811221B35F93B00891B6F /* ChooseJammersViewController.swift */,
+				48183FDE1B21131A00697A25 /* LeadJammer.swift */,
+				481840101B2220E900697A25 /* TrackScoreUnused.swift */,
+				489875B31B17DB4300594D67 /* AppDelegate.swift */,
 				48356CD01B2655D4000F36CA /* DataClass.swift */,
+				48DC52D91B1FC49300BBC2D2 /* Jammers.swift */,
 				4878539B1B30F14F0008C173 /* Jam.swift */,
 				48356CD41B2A97F8000F36CA /* HomeTableStats.swift */,
 				48356CD61B2A9802000F36CA /* AwayTableStats.swift */,
-				48DC52D91B1FC49300BBC2D2 /* Jammers.swift */,
 				4806CAD81B321FF90031505E /* TableViewCell.swift */,
 				489875BA1B17DB4300594D67 /* Images.xcassets */,
 				489875BC1B17DB4300594D67 /* LaunchScreen.xib */,
@@ -238,13 +241,14 @@
 			files = (
 				48356CD71B2A9802000F36CA /* AwayTableStats.swift in Sources */,
 				48356CD51B2A97F8000F36CA /* HomeTableStats.swift in Sources */,
+				48A811231B35F93B00891B6F /* ChooseJammersViewController.swift in Sources */,
 				48356CD11B2655D4000F36CA /* DataClass.swift in Sources */,
 				4806CAD91B321FF90031505E /* TableViewCell.swift in Sources */,
 				489875B61B17DB4300594D67 /* SidelineStats.swift in Sources */,
 				4878539C1B30F14F0008C173 /* Jam.swift in Sources */,
 				48183FDF1B21131A00697A25 /* LeadJammer.swift in Sources */,
 				48DC52DA1B1FC49300BBC2D2 /* Jammers.swift in Sources */,
-				481840111B2220E900697A25 /* TrackScore.swift in Sources */,
+				481840111B2220E900697A25 /* TrackScoreUnused.swift in Sources */,
 				489875B41B17DB4300594D67 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

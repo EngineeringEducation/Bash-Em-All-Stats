@@ -13,11 +13,13 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var middleJammerLabel: UILabel!
     @IBOutlet weak var homeJammerTextField: UITextField!
     @IBOutlet weak var awayJammerTextField: UITextField!
-    @IBOutlet weak var homeJammerLabel: UILabel!
-    @IBOutlet weak var awayJammerLabel: UILabel!
+    @IBOutlet weak var homeJammerLabel: UIButton!
+    @IBOutlet weak var awayJammerLabel: UIButton!
     
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        middleJammerLabel.text = "Jammer 1"
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
