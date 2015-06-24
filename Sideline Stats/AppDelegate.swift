@@ -15,6 +15,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        //let rootViewController = self.window?.rootViewController as! UITabBarController
+        
+        //let homeTeamTable = rootViewController.viewControllers![0] as! HomeTableStats
+        
+        //let awayTeamTable = rootViewController.viewControllers![1] as! AwayTableStats
+        
+        //println(homeTeamTable)
+        //println(awayTeamTable)
+        
         // Override point for customization after application launch.
         return true
     }

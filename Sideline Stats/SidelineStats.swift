@@ -11,16 +11,9 @@
 
 import UIKit
 
-class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  
-    // MARK: - Views
-    @IBOutlet weak var newHomeJammerField: UITextField!
-    @IBOutlet weak var newAwayJammerField: UITextField!
+class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+
     @IBOutlet weak var homeJammerTable: UITableView!
-    @IBOutlet weak var awayJammerTable: UITableView!
-    @IBOutlet weak var saveHomeJammerOutlet: UIButton!
-    @IBOutlet weak var saveAwayJammerOutlet: UIButton!
-    @IBOutlet weak var chooseJammerLabel: UILabel!
     
     // MARK: - Models
     var selectedJammerHome:String = String()
@@ -28,23 +21,53 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     var jammers:Jammers! = Jammers()
     var dataClass:DataClass! = DataClass()
-    
    
     override func viewWillAppear(animated: Bool) {
+      
+        homeJammerTable.reloadData()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        newHomeJammerField.hidden = true
-        newAwayJammerField.hidden = true
-        saveHomeJammerOutlet.hidden = true
-        saveAwayJammerOutlet.hidden = true
+       
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        let cellValue = textField.text
+        
+        let visibleCells = self.homeJammerTable.visibleCells() as! [TableViewCell]
+        
+        var cellWhichContainsThisTextField : TableViewCell!
+        
+        for cell in visibleCells {
+            if textField.isDescendantOfView(cell) {
+                cellWhichContainsThisTextField = cell
+            }
+        }
+        
+        let cellIndexPath = self.homeJammerTable.indexPathForCell(cellWhichContainsThisTextField)
+        
+        println("index path: \(cellIndexPath)")
+        
+        if textField == cellWhichContainsThisTextField.homeJammerTextField {
+            
+            dataClass.addJammerToJammerArray("home", jammer: cellValue)
+ 
+            
+        } else if textField == cellWhichContainsThisTextField.awayJammerTextField {
+            
+            dataClass.addJammerToJammerArray("away", jammer: cellValue)
+            
+        } else {
+            println("You shouldn't be here")
+        }
         
         homeJammerTable.reloadData()
-        awayJammerTable.reloadData()
-        
+        return true
     }
 
     //TODO: Auto-select jammer that was just added
@@ -54,144 +77,109 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
         // Dispose of any resources that can be recreated.
     }
     
-    
-    // Show the fields to add the jammer if they select "add jammer"
-    @IBAction func addHomeJammer(sender: AnyObject) {
-        
-        newHomeJammerField.hidden = false
-        saveHomeJammerOutlet.hidden = false
-        
-    }
-    
-    // Same for away.
-    @IBAction func addAwayJammer(sender: AnyObject) {
-        
-        newAwayJammerField.hidden = false
-        saveAwayJammerOutlet.hidden = false
-    }
-    
-    // MARK: - Save New Jammers
-    // Checks to see if the jammer is already in the array. If it is, then displays message to user. If not, then saves the new jammer to the list of jammers and then reloads the view to include the new jammer.
-    @IBAction func saveHomeJammer(sender: AnyObject) {
-        
-        let newJammer = String(newHomeJammerField.text)
-        dataClass.addJammerToJammerArray("home", jammer: newJammer)
-        homeJammerTable.reloadData()
-    
-    }
-    
-    // Same, but for adding away jammers.
-    @IBAction func saveAwayJammer(sender: AnyObject) {
-        
-        let newJammer = String(newAwayJammerField.text)
-        dataClass.addJammerToJammerArray("away", jammer: newJammer)
-        awayJammerTable.reloadData()
-    }
-    
-    
+  
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if (tableView == homeJammerTable) && dataClass.homeJammers.count != 0 {
-        
-            return dataClass.homeJammers.count
+        if dataClass.homeJammers.count < dataClass.awayJammers.count {
             
-
-        } else if tableView == awayJammerTable && dataClass.awayJammers.count != 0 {
-            
-            return dataClass.awayJammers.count
+            return (dataClass.awayJammers.count + 1)
             
         } else {
             
-            return 0
+            return (dataClass.homeJammers.count + 1)
+            
         }
+        
     }
     
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if tableView == homeJammerTable {
-        
-            let cell = UITableViewCell(style: UITableViewCellStyle.Default,  reuseIdentifier: "Cell")
+        //let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell") as! TableViewCell
 
-            cell.textLabel?.text = dataClass.homeJammers[indexPath.row].number
-            
-            println("table cell home")
-            return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell")as! TableViewCell
         
-        } else if tableView == awayJammerTable {
+        cell.middleJammerLabel.text = "Jammer \(indexPath.row + 1)"
+        
+        if dataClass.homeJammers.count > indexPath.row {
+        
             
-            let cell2 = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
+                if dataClass.homeJammers[indexPath.row].number == "" {
+                    
+                    cell.homeJammerTextField.hidden = false
+                    cell.homeJammerLabel.hidden = true
+                
+                } else {
+                    
+                    cell.homeJammerTextField.hidden = true
+                    cell.homeJammerLabel.hidden = false
+                    cell.homeJammerLabel.setTitle(dataClass.homeJammers[indexPath.row].number, forState: .Normal)
+                    
+                }
+
+        } else {
             
-            cell2.textLabel?.text = dataClass.awayJammers[indexPath.row].number
-            
-            println("table cell away")
-            return cell2
+            cell.homeJammerTextField.hidden = false
+            cell.homeJammerLabel.hidden = true
             
         }
         
-        let cell3 = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
-        return cell3
+        if dataClass.awayJammers.count > indexPath.row {
+
+       
+            if dataClass.awayJammers[indexPath.row].number == "" {
+                
+                cell.awayJammerTextField.hidden = false
+                cell.awayJammerLabel.hidden = true
+                
+            } else {
+                
+                cell.awayJammerTextField.hidden = true
+                cell.awayJammerLabel.hidden = false
+                cell.awayJammerLabel.setTitle(dataClass.awayJammers[indexPath.row].number, forState: .Normal)
+                
+            }
+       
+        } else {
+            
+            cell.awayJammerTextField.hidden = false
+            cell.awayJammerLabel.hidden = true
+            
+        }
+        
+        cell.homeJammerTextField.delegate = self
+        cell.awayJammerTextField.delegate = self
+
+ 
+        return cell
 
     }
     
     override func viewWillDisappear(animated: Bool) {
     
-        dataClass.addJammersToArray(selectedJammerHome,away: selectedJammerAway)
-        dataClass.addJamNumberToArray()
-        println(dataClass.dataArray)
-    
-    }
-    
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        if tableView == homeJammerTable {
-            
-            let indexPath = tableView.indexPathForSelectedRow()
-            let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
-            if currentCell.textLabel?.text != nil {
-                selectedJammerHome = currentCell.textLabel!.text!
-                dataClass.currentJammerHome = currentCell.textLabel!.text!
-            } else {
-                println("nothing here home")
-            }
-            
-        } else {
-            
-            let indexPath = tableView.indexPathForSelectedRow()
-            let currentCell = tableView.cellForRowAtIndexPath(indexPath!) as UITableViewCell!
-            if currentCell.textLabel?.text != nil {
-                selectedJammerAway = currentCell.textLabel!.text!
-                dataClass.currentJammerAway = currentCell.textLabel!.text!
-            } else {
-                println("nothing here away")
-            }
-
+        if dataClass.jamData.count < dataClass.currentJamInt {
+            dataClass.addJamNumberToArray()
         }
-        
-    }
+        println(dataClass.homeJammers.count)
+        dataClass.addJammersToDataArray(selectedJammerHome,away: selectedJammerAway)
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        
-        if selectedJammerHome.isEmpty == true || selectedJammerAway.isEmpty == true {
-            
-            chooseJammerLabel.text = "Please choose a jammer for each team"
-            println("nope, won't happen")
-            return false
-            
-            
-        }
-        
-        return true
-        
     }
-    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    
-        if segue.identifier == "ShowLeadPageSegue" {
+        
+        if segue.identifier == "ChooseJammersSegue" {
             
-            if let destinationVC = segue.destinationViewController as? LeadJammer {
+            if let destinationVC = segue.destinationViewController as? ChooseJammersViewController {
+                
+                destinationVC.jammers = jammers
+                destinationVC.dataClass = dataClass
+                
+            }
+            
+        } else if segue.identifier == "ShowDashboardSegue" {
+            
+            if let destinationVC = segue.destinationViewController as? StatsDashboardTableViewController {
                 
                 destinationVC.jammers = jammers
                 destinationVC.dataClass = dataClass
@@ -199,7 +187,11 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
             
         }
-    
+        
     }
-
+    
+    func tableView(tableView: UITableView, shouldHighlightRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
+    }
+    
 }

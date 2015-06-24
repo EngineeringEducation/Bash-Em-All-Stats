@@ -75,7 +75,9 @@ class TrackScore:UIViewController {
         
         dataClass.calculateScores(homeCurrentScore, away: awayCurrentScore)
         dataClass.currentJamInt++
-        dataClass.populateDataArray()
+        dataClass.populateHomeDataArray()
+        dataClass.populateAwayDataArray()
+        
         
     }
     
