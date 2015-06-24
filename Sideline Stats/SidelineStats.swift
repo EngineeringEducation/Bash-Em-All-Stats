@@ -177,6 +177,15 @@ class SidelineStats: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 
             }
             
+        } else if segue.identifier == "ShowDashboardSegue" {
+            
+            if let destinationVC = segue.destinationViewController as? StatsDashboardTableViewController {
+                
+                destinationVC.jammers = jammers
+                destinationVC.dataClass = dataClass
+                
+            }
+            
         }
         
     }

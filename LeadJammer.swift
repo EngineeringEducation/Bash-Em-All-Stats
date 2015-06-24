@@ -9,8 +9,8 @@ import UIKit
 
 enum teamThatIsLead : String {
     
-    case Home = "Home"
-    case Away = "Away"
+    case Home = "home"
+    case Away = "away"
     case None = "No Lead"
     
     init() {
@@ -29,8 +29,11 @@ class LeadJammer:UIViewController, UITextFieldDelegate{
     var homeCurrentScore:Int?
     
     @IBOutlet weak var homeScoreUITextField: UITextField!
-    
     @IBOutlet weak var awayScoreUITextField: UITextField!
+    @IBOutlet weak var homeCurrentJammerLabel: UILabel!
+    @IBOutlet weak var homeJammerIsLeadUIButton: UIButton!
+    @IBOutlet weak var awayCurrentJammerLabel: UILabel!
+    @IBOutlet weak var awayJammerIsLeadUIButton: UIButton!
     
     var jammers:Jammers!
     var dataClass:DataClass!
@@ -56,15 +59,43 @@ class LeadJammer:UIViewController, UITextFieldDelegate{
 //        displayLeadJammerMessage(team)
     }
     
+    func editColorToReflectLead() {
+        
+        switch (leadTeam) {
+            
+        case .Home:
+            homeJammerIsLeadUIButton.backgroundColor = UIColor.purpleColor()
+            awayJammerIsLeadUIButton.backgroundColor = UIColor.grayColor()
+            homeJammerIsLeadUIButton.selected = true
+            awayJammerIsLeadUIButton.selected = false
+            
+        case .Away:
+            awayJammerIsLeadUIButton.backgroundColor = UIColor.purpleColor()
+            homeJammerIsLeadUIButton.backgroundColor = UIColor.grayColor()
+            awayJammerIsLeadUIButton.selected = true
+            homeJammerIsLeadUIButton.selected = false
+        default:
+            awayJammerIsLeadUIButton.backgroundColor = UIColor.grayColor()
+            homeJammerIsLeadUIButton.backgroundColor = UIColor.grayColor()
+            awayJammerIsLeadUIButton.selected = false
+            homeJammerIsLeadUIButton.selected = false
+        }
+        
+        
+        
+    }
+    
     @IBAction func homeIsLead(sender: AnyObject) {
         
         assignLeadTeam("home")
+        editColorToReflectLead()
     }
    
     
     @IBAction func awayIsLead(sender: AnyObject) {
     
         assignLeadTeam("away")
+        editColorToReflectLead()
         
     }
     
@@ -77,7 +108,15 @@ class LeadJammer:UIViewController, UITextFieldDelegate{
         homeCurrentScore = dataClass.currentScoreHome
         awayCurrentScore = dataClass.currentScoreAway
         println("home \(homeCurrentScore)")
-        
+        homeJammerIsLeadUIButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        awayJammerIsLeadUIButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        homeJammerIsLeadUIButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
+        awayJammerIsLeadUIButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Selected)
+        homeJammerIsLeadUIButton.backgroundColor = UIColor.grayColor()
+        awayJammerIsLeadUIButton.backgroundColor = UIColor.grayColor()
+        homeCurrentJammerLabel.text = dataClass.currentJammerHome
+        awayCurrentJammerLabel.text = dataClass.currentJammerAway
+
     
     }
     
@@ -94,7 +133,6 @@ class LeadJammer:UIViewController, UITextFieldDelegate{
     
     @IBAction func editAwayScore(sender: UITextField) {
         
-            println(awayScoreUITextField.text)
     }
     
     //TODO: Need to make sure they only put in Ints into the score textfields. Right now not protecting from that at all.
@@ -114,16 +152,12 @@ class LeadJammer:UIViewController, UITextFieldDelegate{
         
     }
     
-    
-//    func displayLeadJammerMessage(var lead:String) {
-//        
-//        leadJammerMessage.text = (leadTeam == teamThatIsLead.None) ? "None" : "Lead Jammer: " + lead
-//        
-//    }
+
     
     override func viewWillDisappear(animated: Bool) {
         
         super.viewWillAppear(animated)
+        leadJammerTeam = leadTeam.rawValue
         dataClass.addWhoWasLeadToArray(leadJammerTeam)
         dataClass.currentLead = leadJammerTeam
         dataClass.calculateScores(homeCurrentScore!, away: awayCurrentScore!)
@@ -146,10 +180,16 @@ class LeadJammer:UIViewController, UITextFieldDelegate{
                 
             }
             
+        } else if segue.identifier == "ShowDashboardSegue" {
+            
+            if let destinationVC = segue.destinationViewController as? StatsDashboardTableViewController {
+                
+                destinationVC.jammers = jammers
+                destinationVC.dataClass = dataClass
+                
+            }
         }
         
     }
-    
-    
-    
+
 }

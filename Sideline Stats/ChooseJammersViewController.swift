@@ -124,11 +124,19 @@ class ChooseJammersViewController: UIViewController, UITableViewDelegate, UITabl
         
         } else if segue.identifier == "TrackJamSegue" {
                 
-                if let destinationVC = segue.destinationViewController as? LeadJammer {
-                    
-                    destinationVC.jammers = jammers
-                    destinationVC.dataClass = dataClass
-                    
+            if let destinationVC = segue.destinationViewController as? LeadJammer {
+                
+                destinationVC.jammers = jammers
+                destinationVC.dataClass = dataClass
+            }
+            
+        } else if segue.identifier == "ShowDashboardSegue" {
+            
+            if let destinationVC = segue.destinationViewController as? StatsDashboardTableViewController {
+                
+                destinationVC.jammers = jammers
+                destinationVC.dataClass = dataClass
+                
             }
         }
         

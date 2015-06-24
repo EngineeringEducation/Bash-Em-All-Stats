@@ -72,9 +72,6 @@ class DataClass: NSObject {
         currentScoreHome = home
         currentScoreAway = away
         
-        println(currentScoreHome)
-        println(currentScoreAway)
-        
     }
     
     func addJammerToJammerArray(team: String, jammer: String) {
