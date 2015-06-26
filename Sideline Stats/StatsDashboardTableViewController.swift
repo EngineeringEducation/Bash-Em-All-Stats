@@ -64,6 +64,21 @@ class StatsDashboardTableViewController: UIViewController, UITableViewDelegate, 
         return cell
         
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "ChooseJammersSegue" {
+            
+            if let destinationVC = segue.destinationViewController as? ChooseJammersViewController {
+                
+                destinationVC.jammers = jammers
+                destinationVC.dataClass = dataClass
+                
+            }
+            
+        }
+    }
+
 
 
 }
